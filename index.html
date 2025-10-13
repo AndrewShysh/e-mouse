@@ -17,14 +17,16 @@
     .danger{color:var(--danger);font-weight:700}
     .tips{margin-top:18px;background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
     ul{margin:8px 0 0 18px}
-    .btns{display:flex;gap:10px;margin-top:16px}
+    .btns{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap}
     .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
     .btn-safe{background:transparent;color:#bfe3ff;border:1px solid rgba(191,227,255,0.08)}
     .btn-info{background:linear-gradient(90deg,#6fb7ff,#8ce0ff);color:#042033}
     .more{margin-top:14px;color:var(--muted);font-size:14px}
     details{margin-top:12px}
     summary{cursor:pointer;outline:none}
-    footer{margin-top:18px;color:var(--muted);font-size:13px}
+    footer{margin-top:18px;color:var(--muted);font-size:13px;text-align:center}
+    .display-image{margin-top:20px;text-align:center;}
+    .display-image img{max-width:100%;border-radius:12px;box-shadow:0 0 10px rgba(0,0,0,0.5);}
     @media (max-width:720px){.row{flex-direction:column;align-items:flex-start}.icon{width:82px;height:82px;font-size:30px}}
   </style>
 </head>
@@ -34,7 +36,7 @@
       <div class="icon" aria-hidden>⚠️</div>
       <div style="flex:1">
         <h1>Simulated scam page</h1>
-        <p class="lead">This page is a safe, **educational simulation** — it does <strong>not</strong> harvest data or attempt any real attack. Use it to teach students what a suspicious QR redirect might show.</p>
+        <p class="lead">This page is a safe, <strong>educational simulation</strong> — it does <strong>not</strong> harvest data or attempt any real attack. Use it to teach students what a suspicious QR redirect might show.</p>
         <p class="big danger">You have been redirected here by a QR code. Do not enter any credentials or personal info.</p>
 
         <div class="tips" role="region" aria-label="Tips for students">
@@ -45,6 +47,12 @@
             <li>Never enter passwords, codes, or payment info on unexpected pages.</li>
             <li>When in doubt — close the page and open the legitimate site manually.</li>
           </ul>
+        </div>
+
+        <div class="display-image">
+          <strong>Educational image:</strong><br>
+          <!-- Replace image.jpg with your actual image path in the project -->
+          <img src="image.jpg" alt="Educational illustration" />
         </div>
 
         <div class="btns">
@@ -80,4 +88,3 @@
   </script>
 </body>
 </html>
-

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QR Safety — Simulated Scam Warning</title>
+  <style>
+    :root{--bg:#0b1020;--card:#0f1724;--accent:#ffb86b;--danger:#ff4d4f;--muted:#9aa4b2}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+    body{background:linear-gradient(180deg,#071126 0%, #07121a 60%);display:flex;align-items:center;justify-content:center;padding:24px;color:#e6eef6}
+    .card{max-width:880px;width:100%;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-radius:12px;padding:28px;box-shadow:0 10px 30px rgba(2,6,23,0.6);border:1px solid rgba(255,255,255,0.03)}
+    .row{display:flex;gap:20px;align-items:center}
+    .icon{width:112px;height:112px;flex:0 0 112px;border-radius:14px;background:linear-gradient(180deg,var(--danger),#aa2b2b);display:flex;align-items:center;justify-content:center;font-size:44px}
+    h1{margin:0 0 6px 0;font-size:28px;line-height:1.05}
+    p.lead{margin:0 0 12px 0;color:var(--muted)}
+    .big{font-size:20px;font-weight:600;color:#fff}
+    .danger{color:var(--danger);font-weight:700}
+    .tips{margin-top:18px;background:rgba(255,255,255,0.02);padding:14px;border-radius:10px;border:1px solid rgba(255,255,255,0.02)}
+    ul{margin:8px 0 0 18px}
+    .btns{display:flex;gap:10px;margin-top:16px}
+    .btn{padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600}
+    .btn-safe{background:transparent;color:#bfe3ff;border:1px solid rgba(191,227,255,0.08)}
+    .btn-info{background:linear-gradient(90deg,#6fb7ff,#8ce0ff);color:#042033}
+    .more{margin-top:14px;color:var(--muted);font-size:14px}
+    details{margin-top:12px}
+    summary{cursor:pointer;outline:none}
+    footer{margin-top:18px;color:var(--muted);font-size:13px}
+    @media (max-width:720px){.row{flex-direction:column;align-items:flex-start}.icon{width:82px;height:82px;font-size:30px}}
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <div class="row">
+      <div class="icon" aria-hidden>⚠️</div>
+      <div style="flex:1">
+        <h1>Simulated scam page</h1>
+        <p class="lead">This page is a safe, **educational simulation** — it does <strong>not</strong> harvest data or attempt any real attack. Use it to teach students what a suspicious QR redirect might show.</p>
+        <p class="big danger">You have been redirected here by a QR code. Do not enter any credentials or personal info.</p>
+
+        <div class="tips" role="region" aria-label="Tips for students">
+          <strong>Quick safety checklist:</strong>
+          <ul>
+            <li>Inspect the URL before taking any action.</li>
+            <li>Look for misspellings, odd domains, or extra path segments.</li>
+            <li>Never enter passwords, codes, or payment info on unexpected pages.</li>
+            <li>When in doubt — close the page and open the legitimate site manually.</li>
+          </ul>
+        </div>
+
+        <div class="btns">
+          <button class="btn btn-info" onclick="copyURL()" title="Copy this page's URL">Copy page URL</button>
+          <button class="btn btn-safe" onclick="showHow()">How this was made</button>
+        </div>
+
+        <div class="more">This page intentionally provides only a short warning message. Use it as a controlled demonstration of QR risks.</div>
+
+        <details>
+          <summary>What teachers should know</summary>
+          <p style="margin:8px 0 0 0;color:var(--muted)">You can host this single HTML file on any static hosting (GitHub Pages, Netlify, your school server). Generate QR codes that point to this hosted URL. Always mark the demonstration as simulated and do not collect student data.</p>
+        </details>
+
+        <footer>
+          <div>Created for classroom QR-safety demos • No tracking, no data collection</div>
+        </footer>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function copyURL(){
+      navigator.clipboard.writeText(window.location.href).then(()=>{
+        alert('URL copied to clipboard:\n' + window.location.href);
+      }).catch(()=>{
+        prompt('Copy the URL manually:', window.location.href);
+      });
+    }
+    function showHow(){
+      alert('This is a single static HTML file. Host it on GitHub Pages or any static host. Then generate a QR code that points to the hosted URL.\n\nTip: use https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=YOUR_URL (replace YOUR_URL).');
+    }
+  </script>
+</body>
+</html>
